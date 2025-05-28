@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Square & Cube Calculator</title>
+  <style>
+    body {
+      background-color: #111;
+      font-family: Arial, sans-serif;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background-color: #222;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 10px #444;
+      text-align: center;
+    }
+
+    input[type="number"], input[readonly] {
+      width: 200px;
+      padding: 10px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      text-align: center;
+    }
+
+    button {
+      width: 120px;
+      padding: 10px;
+      margin: 10px 5px;
+      font-size: 16px;
+      background-color: #000;
+      color: white;
+      border: 2px solid white;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #333;
+    }
+
+    label {
+      display: block;
+      margin: 10px 0 5px;
+      font-weight: bold;
+    }
+
+    .input-section {
+      background-color: darkorange;
+      padding: 10px;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+
+    #outputLabel {
+      font-size: 18px;
+      color: lightgreen;
+      margin-bottom: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="input-section">
+      <label for="numberInput">Input number</label>
+      <input type="number" id="numberInput" />
+    </div>
+
+    <div id="outputLabel">Output</div>
+    <input type="text" id="result" readonly />
+
+    <div>
+      <button onclick="findSquare()">Find Square</button>
+      <button onclick="findCube()">Find Cube</button>
+    </div>
+    <div>
+      <button onclick="resetFields()">Reset</button>
+    </div>
+  </div>
+
+  <script>
+    function findSquare() {
+      const number = parseFloat(document.getElementById("numberInput").value);
+      if (isNaN(number)) {
+        document.getElementById("result").value = "";
+        document.getElementById("outputLabel").innerText = "Please enter a valid number!";
+        return;
+      }
+      document.getElementById("result").value = number * number;
+      document.getElementById("outputLabel").innerText = "The Square is";
+    }
+
+    function findCube() {
+      const number = parseFloat(document.getElementById("numberInput").value);
+      if (isNaN(number)) {
+        document.getElementById("result").value = "";
+        document.getElementById("outputLabel").innerText = "Please enter a valid number!";
+        return;
+      }
+      document.getElementById("result").value = number * number * number;
+      document.getElementById("outputLabel").innerText = "The Cube is";
+    }
+
+    function resetFields() {
+      document.getElementById("numberInput").value = "";
+      document.getElementById("result").value = "";
+      document.getElementById("outputLabel").innerText = "Output";
+    }
+  </script>
+</body>
+</html>

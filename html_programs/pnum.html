@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prime Number Checker</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      margin-top: 100px;
+    }
+
+    .container {
+      padding: 20px;
+      border: 2px solid #aaa;
+      border-radius: 10px;
+      width: 300px;
+      background-color: #f9f9f9;
+    }
+
+    .row {
+      margin-bottom: 15px;
+    }
+
+    label {
+      display: inline-block;
+      width: 100px;
+    }
+
+    input[type="text"] {
+      width: 150px;
+      padding: 5px;
+    }
+
+    button {
+      width: 120px;
+      background-color: orange;
+      height: 35px;
+      border: 2px solid darkred;
+      border-radius: 10px;
+      margin-left: 85px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: darkorange;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <label for="inputNumber">Input Number:</label>
+      <input type="text" id="inputNumber" />
+    </div>
+    <div class="row">
+      <label for="output">Is Prime:</label>
+      <input type="text" id="output" readonly />
+    </div>
+    <div class="row">
+      <button onclick="checkPrime()">Check Prime</button>
+    </div>
+  </div>
+
+  <script>
+    function checkPrime() {
+      const number = parseInt(document.getElementById("inputNumber").value);
+      if (isNaN(number)) {
+        document.getElementById("output").value = "Invalid input";
+        return;
+      }
+
+      if (number <= 1) {
+        document.getElementById("output").value = "No";
+        return;
+      }
+
+      let isPrime = true;
+      for (let i = 2; i <= Math.sqrt(number); i++) {
+        if (number % i === 0) {
+          isPrime = false;
+          break;
+        }
+      }
+
+      document.getElementById("output").value = isPrime ? "Yes" : "No";
+    }
+  </script>
+</body>
+
+</html>
